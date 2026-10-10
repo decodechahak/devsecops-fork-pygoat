@@ -46,3 +46,7 @@ jobs:
           dockerhub-user: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub-password: ${{ secrets.REPO_PWD }}
           command: quickview,cves
+          image: myapp:latest
+          summary: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          write-comment: true
