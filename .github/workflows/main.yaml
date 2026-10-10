@@ -48,3 +48,12 @@ jobs:
           command: quickview,cves
           image: local://myapp:latest
           summary: true
+          only-severities: critical,high
+          sarif-file: scout-report.sarif
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: docker-scout-findings
+          path: scout-report.sarif
