@@ -41,12 +41,10 @@ jobs:
         run: docker build -f Dockerfile -t myapp:latest .
 
       - name: Docker Scout Scan
-        uses: docker/scout-action@v1.0.9
+        uses: docker/scout-action@v1
         with:
           dockerhub-user: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub-password: ${{ secrets.REPO_PWD }}
           command: quickview,cves
-          image: myapp:latest
+          image: local://myapp:latest
           summary: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          write-comment: true
